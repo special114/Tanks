@@ -1,7 +1,9 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class GamePanel extends JPanel implements ActionListener {
     public static final int WIDTH = 700;        //najlepiej wielokrotnosci brick size
@@ -77,32 +79,36 @@ public class GamePanel extends JPanel implements ActionListener {
     }
 
     private void initValues(int type) {
-        if (type == Gameplay.CLIENT) {
-            tank_img_U = new ImageIcon("Images/tank7U.png").getImage();
-            tank_img_D = new ImageIcon("Images/tank7D.png").getImage();
-            tank_img_L = new ImageIcon("Images/tank7L.png").getImage();
-            tank_img_R = new ImageIcon("Images/tank7R.png").getImage();
-            enemy_tank_img_U = new ImageIcon("Images/tank8U.png").getImage();
-            enemy_tank_img_D = new ImageIcon("Images/tank8D.png").getImage();
-            enemy_tank_img_L = new ImageIcon("Images/tank8L.png").getImage();
-            enemy_tank_img_R = new ImageIcon("Images/tank8R.png").getImage();
+        try {
+            if (type == Gameplay.CLIENT) {
+                tank_img_U = ImageIO.read(getClass().getResource("/tank7U.png"));
+                tank_img_D = ImageIO.read(getClass().getResource("/tank7D.png"));
+                tank_img_L = ImageIO.read(getClass().getResource("/tank7L.png"));
+                tank_img_R = ImageIO.read(getClass().getResource("/tank7R.png"));
+                enemy_tank_img_U = ImageIO.read(getClass().getResource("/tank8U.png"));
+                enemy_tank_img_D = ImageIO.read(getClass().getResource("/tank8D.png"));
+                enemy_tank_img_L = ImageIO.read(getClass().getResource("/tank8L.png"));
+                enemy_tank_img_R = ImageIO.read(getClass().getResource("/tank8R.png"));
+            }
+            else {
+                tank_img_U = ImageIO.read(getClass().getResource("/tank8U.png"));
+                tank_img_D = ImageIO.read(getClass().getResource("/tank8D.png"));
+                tank_img_L = ImageIO.read(getClass().getResource("/tank8L.png"));
+                tank_img_R = ImageIO.read(getClass().getResource("/tank8R.png"));
+                enemy_tank_img_U = ImageIO.read(getClass().getResource("/tank7U.png"));
+                enemy_tank_img_D = ImageIO.read(getClass().getResource("/tank7D.png"));
+                enemy_tank_img_L = ImageIO.read(getClass().getResource("/tank7L.png"));
+                enemy_tank_img_R = ImageIO.read(getClass().getResource("/tank7R.png"));
+            }
+            bullet_img_U = ImageIO.read(getClass().getResource("/bulletU.png"));
+            bullet_img_D = ImageIO.read(getClass().getResource("/bulletD.png"));
+            bullet_img_L = ImageIO.read(getClass().getResource("/bulletL.png"));
+            bullet_img_R = ImageIO.read(getClass().getResource("/bulletR.png"));
+            brick = ImageIO.read(getClass().getResource("/solid_brick.jpg"));
+            explosion = ImageIO.read(getClass().getResource("/explosion.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        else {
-            tank_img_U = new ImageIcon("Images/tank8U.png").getImage();
-            tank_img_D = new ImageIcon("Images/tank8D.png").getImage();
-            tank_img_L = new ImageIcon("Images/tank8L.png").getImage();
-            tank_img_R = new ImageIcon("Images/tank8R.png").getImage();
-            enemy_tank_img_U = new ImageIcon("Images/tank7U.png").getImage();
-            enemy_tank_img_D = new ImageIcon("Images/tank7D.png").getImage();
-            enemy_tank_img_L = new ImageIcon("Images/tank7L.png").getImage();
-            enemy_tank_img_R = new ImageIcon("Images/tank7R.png").getImage();
-        }
-        bullet_img_U = new ImageIcon("Images/bulletU.png").getImage();
-        bullet_img_D = new ImageIcon("Images/bulletD.png").getImage();
-        bullet_img_L = new ImageIcon("Images/bulletL.png").getImage();
-        bullet_img_R = new ImageIcon("Images/bulletR.png").getImage();
-        brick = new ImageIcon("Images/solid_brick.jpg").getImage();
-        explosion = new ImageIcon("Images/explosion.png").getImage();
 
         for (int i = 0; i < WIDTH; ++i)
             for (int j = 0; j < HEIGHT; ++j)

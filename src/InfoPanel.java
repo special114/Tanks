@@ -1,7 +1,9 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class InfoPanel extends JPanel implements ActionListener {
     private final int WIDTH = 100;
@@ -18,7 +20,11 @@ public class InfoPanel extends JPanel implements ActionListener {
     public InfoPanel(Gameplay g) {
         gameplay = g;
         this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        panel = new ImageIcon("Images/panel.png").getImage();
+        try {
+            panel = ImageIO.read(getClass().getResource("/panel.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         player_1_score = 0;
         player_1_score = 0;
