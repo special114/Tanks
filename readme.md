@@ -26,7 +26,7 @@ If you run on different computers then type their actual IP addresses.
 
 The port is always 10110 .
 
-Screenshots:
+## Screenshots:
 
 ![t1](https://user-images.githubusercontent.com/51239039/110344657-01ae8e80-802e-11eb-84f0-3e5a1f041fbf.PNG)
 ![t2](https://user-images.githubusercontent.com/51239039/110344667-0410e880-802e-11eb-86c3-68f18cfefd94.PNG)
